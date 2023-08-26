@@ -1,0 +1,21 @@
+**Consolidation_Tool_Java requirements 23.08.26**
+
+This application  generates a consolidated trial balance from a set of individual trial balances.
+
+The input will be via excel (XLSX) file.
+
+There will be a standard trial balance template.
+
+The GL accounts are built into the code; mapping (if needed) will be done at the legal entity level where the
+consolidated GL accounts do not match to the legal entity's.
+
+The individual trial balance files will be put into a local folder.
+
+The resultant consolidated file will be available in the output_consolidated_trial_balance folder.
+
+There is no limit to the amount of companies that can be consolidated; a separate trial balance just needs to be placed
+into the input_trail_balances folder.
+
+Assume all companies are 100% owned by the group.
+
+All group companies will have USD as the functional currency.
