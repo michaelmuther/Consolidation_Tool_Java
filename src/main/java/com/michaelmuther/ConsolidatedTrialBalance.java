@@ -1,9 +1,11 @@
 package com.michaelmuther;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+
 public class ConsolidatedTrialBalance extends AbstractTrialBalance {
 
-    @Override
-    public void printTrialBalance() {
-
+    public ConsolidatedTrialBalance(LocalDate date, ArrayList<GLAccount> accounts) {
+        super("Group Consolidation", date, accounts);
     }
 }
