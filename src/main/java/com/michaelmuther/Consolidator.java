@@ -1,18 +1,19 @@
 package com.michaelmuther;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 
 public class Consolidator {
 
-    ArrayList<SourceTrialBalance> sourceTrialBalances;
+    HashSet<SourceTrialBalance> sourceTrialBalances;
     ConsolidatedTrialBalance consolidatedTrialBalance;
     LocalDate date;
 
-    public Consolidator(ArrayList<SourceTrialBalance> sourceTrialBalances) {
+    public Consolidator(HashSet<SourceTrialBalance> sourceTrialBalances) {
         this.sourceTrialBalances = sourceTrialBalances;
-        this.date = sourceTrialBalances.get(0).getDate();
+        this.date = sourceTrialBalances.iterator().next().getDate();
     }
 
     public ConsolidatedTrialBalance consolidate(List<SourceTrialBalance> sourceTrialBalances) {
@@ -22,9 +23,12 @@ public class Consolidator {
             return null;
     }
 
-    private ArrayList<GLAccount> consolidateLogic() {
-        // start by adding all accounts
-        return null;
+    private HashMap<Integer, GLAccount> consolidateLogic() {
+        HashMap<Integer, GLAccount> consolidatedAccounts = sourceTrialBalances.iterator().next().getAccounts();
+//        for (GLAccount account : consolidatedAccounts) {
+//
+//        }
+        return consolidatedAccounts;
     }
 
     private boolean datesMatch() {
