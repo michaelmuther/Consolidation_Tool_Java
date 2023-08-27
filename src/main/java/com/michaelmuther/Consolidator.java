@@ -3,7 +3,6 @@ package com.michaelmuther;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 
 public class Consolidator {
 
@@ -16,7 +15,9 @@ public class Consolidator {
         this.date = sourceTrialBalances.iterator().next().getDate();
     }
 
-    public ConsolidatedTrialBalance consolidate(List<SourceTrialBalance> sourceTrialBalances) {
+    public ConsolidatedTrialBalance consolidate() {
+        System.out.println("dates match: " + datesMatch());
+        System.out.println("trial balances are balanced: " + sourceTrialBalancesAreBalanced());
         if (datesMatch() && sourceTrialBalancesAreBalanced())
             return new ConsolidatedTrialBalance(date, consolidateLogic());
         else
@@ -24,10 +25,27 @@ public class Consolidator {
     }
 
     private HashMap<Integer, GLAccount> consolidateLogic() {
-        HashMap<Integer, GLAccount> consolidatedAccounts = sourceTrialBalances.iterator().next().getAccounts();
-//        for (GLAccount account : consolidatedAccounts) {
-//
-//        }
+
+        // declare and instantiate iterator for the sourceTrialBalances HashSet
+        var iterator = sourceTrialBalances.iterator();
+
+        // set the consolidated accounts HashMap equal to the first sourceTrialBalance accounts in the HashSet of
+        // sourceTrialBalances
+        HashMap<Integer, GLAccount> consolidatedAccounts = iterator.next().getAccounts();
+
+        // iterate over the remaining sourceTrialBalances
+        while (iterator.hasNext()) {
+
+            // iterate over the HashMap of GLAccounts in each sourceTrialBalance
+            iterator.next().getAccounts().values().forEach(account -> {
+                var sourceTBAccountNumber = account.getNumber();
+                var sourceTBGLAccountBalance = account.getBalance();
+                var consolidatedGLAccount = consolidatedAccounts.get(sourceTBAccountNumber);
+                var consolidatedAccountBalance = consolidatedGLAccount.getBalance();
+                consolidatedGLAccount.setBalance(consolidatedAccountBalance.add(sourceTBGLAccountBalance));
+            });
+        }
+
         return consolidatedAccounts;
     }
 

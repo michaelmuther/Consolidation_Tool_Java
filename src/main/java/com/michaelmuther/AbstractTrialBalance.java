@@ -3,6 +3,7 @@ package com.michaelmuther;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.HashMap;
+import java.util.TreeMap;
 
 abstract class AbstractTrialBalance {
 
@@ -18,9 +19,9 @@ abstract class AbstractTrialBalance {
         this.isBalanced = isTrialBalanceBalanced();
     }
 
-    public String getCompanyName() {
-        return companyName;
-    }
+//    public String getCompanyName() {
+//        return companyName;
+//    }
 
     public LocalDate getDate() {
         return date;
@@ -35,6 +36,8 @@ abstract class AbstractTrialBalance {
     }
 
     private boolean isTrialBalanceBalanced() {
+//        return true;
+//        accounts.values().forEach(i-> System.out.println("Account: " + i.getNumber() + " Balance: " + i.getBalance()));
         return accounts.values()
             .stream()
             .map(GLAccount::getBalance)
@@ -44,6 +47,7 @@ abstract class AbstractTrialBalance {
 
     public void printTrialBalance() {
         System.out.println("Company Name: " + companyName + " Date: " + date);
-        accounts.values().forEach(i -> System.out.println(i.getNumber() + " " + i.getBalance()));
+        TreeMap<Integer, GLAccount> sortedAccounts = new TreeMap<>(accounts);
+        sortedAccounts.values().forEach(i -> System.out.println(i.getNumber() + " " + i.getBalance()));
     }
 }

@@ -9,7 +9,7 @@ public class GLAccount {
     private final int number;
 //    private final Type type;
     private final String name;
-    private final BigDecimal balance;
+    private BigDecimal balance;
 
     public GLAccount (int accountNumber, String accountName, BigDecimal balance) {
         this.number = accountNumber;
@@ -28,6 +28,10 @@ public class GLAccount {
 
     public String getName() {
         return name;
+    }
+
+    public void setBalance(BigDecimal balance) {
+        this.balance = balance;
     }
 
     public BigDecimal getBalance() {
