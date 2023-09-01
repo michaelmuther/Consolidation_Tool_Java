@@ -46,8 +46,8 @@ abstract class AbstractTrialBalance {
             .reduce(BigDecimal.ZERO, BigDecimal::add)
             .equals(BigDecimal.ZERO);
         System.out.println(companyName + " is balanced: " + isBalanced);
-//        return isBalanced;
-        return true;
+        return isBalanced;
+//        return true;
     }
 
     public void printTrialBalance() {
