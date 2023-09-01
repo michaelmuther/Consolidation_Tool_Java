@@ -1,10 +1,10 @@
 package com.michaelmuther;
 
-import com.michaelmuther.input.InputMain;
+import com.michaelmuther.input.FolderInput;
 
 public class Main {
     public static void main(String[] args) {
-        var test = new InputMain();
+        var test = new FolderInput();
 //        test.printAllFilesInFolder();
         test.getInput();
         test.printFiles();
