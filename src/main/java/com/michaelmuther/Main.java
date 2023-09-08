@@ -1,13 +1,19 @@
 package com.michaelmuther;
 
 import com.michaelmuther.input.FolderInput;
+import com.michaelmuther.input.STBFactory;
 
 public class Main {
     public static void main(String[] args) {
-        var test = new FolderInput();
-//        test.printAllFilesInFolder();
-        test.getInput();
-        test.printFiles();
+        var testInput = new FolderInput();
+        System.out.println("All files in the folder before import:");
+        testInput.printAllFilesInFolder();
+        testInput.getInput();
+        System.out.println("All files imported:");
+        testInput.printFiles();
+        var testSTBFactory = new STBFactory(testInput.getFiles());
+        testSTBFactory.createSourceTrialBalances();
+//        testSTBFactory.printAllSourceTrialBalances();
 //        System.out.println("number of files: "+ test.getFiles().size());
 //        test.getInput();
 //        var testConsolidator = new Consolidator(test.getTrialBalances());
