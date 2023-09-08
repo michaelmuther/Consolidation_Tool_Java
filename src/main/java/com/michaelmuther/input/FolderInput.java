@@ -31,9 +31,9 @@ public class FolderInput {
 
     // regex predicate
     private static boolean isXLSX(Path path) {
-        String FILE_EXTENSION = "xlsx";
+        String FILE_EXTENSION = ".xlsx";
         String fileName = path.getFileName().toString();
-        String subString = fileName.substring(fileName.length() - 4,fileName.length());
+        String subString = fileName.substring(fileName.length() - 5,fileName.length());
 //        System.out.println(subString);
         return FILE_EXTENSION.equals(subString);
     }
