@@ -15,6 +15,8 @@
     </properties>
 
     <dependencies>
+
+        <!--Apache POI dependencies -->
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi</artifactId>
@@ -25,6 +27,13 @@
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
             <version>5.2.2</version>
+        </dependency>
+
+        <!--JUnit5 -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.7.1</version>
         </dependency>
 
     </dependencies>
