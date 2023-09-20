@@ -4,6 +4,7 @@ import com.michaelmuther.input.FolderInput;
 import com.michaelmuther.input.STBFactory;
 
 public class Main {
+
     public static void main(String[] args) {
         var testInput = new FolderInput();
         System.out.println("All files in the folder before import:");
