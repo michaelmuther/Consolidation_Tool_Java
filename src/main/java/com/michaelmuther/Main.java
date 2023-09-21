@@ -6,18 +6,26 @@ import com.michaelmuther.input.STBFactory;
 public class Main {
 
     public static void main(String[] args) {
+
+        System.out.println("\n***testInput***");
         var testInput = new FolderInput();
         System.out.println("All files in the folder before import:");
         testInput.printAllFilesInFolder();
         testInput.getInput();
         System.out.println("All files imported:");
         testInput.printFiles();
+
+        System.out.println("\n***testSTBFactory***");
         var testSTBFactory = new STBFactory(testInput.getFiles());
         testSTBFactory.createSourceTrialBalances();
+        System.out.println("size of sourceTrialBalancesHashSet: "+ testSTBFactory.getSourceTrialBalances().size());
+
+
+
 //        testSTBFactory.printAllSourceTrialBalances();
 //        System.out.println("number of files: "+ test.getFiles().size());
 //        test.getInput();
-//        var testConsolidator = new Consolidator(test.getTrialBalances());
+//        var testConsolidator = new Consolidator(testSTBFactory.getSourceTrialBalances());
 //        var testConsolidatedTB = testConsolidator.consolidate();
 //        testConsolidatedTB.printTrialBalance();
 
