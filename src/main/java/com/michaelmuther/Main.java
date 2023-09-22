@@ -5,6 +5,8 @@ import com.michaelmuther.input.STBFactory;
 
 public class Main {
 
+    // test update 23.09.22
+
     public static void main(String[] args) {
 
         System.out.println("\n***testInput***");
