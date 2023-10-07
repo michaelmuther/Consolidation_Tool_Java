@@ -1,4 +1,9 @@
-package com.michaelmuther;
+package com.michaelmuther.consolidator;
+
+import com.michaelmuther.trialbalance.AbstractTrialBalance;
+import com.michaelmuther.trialbalance.ConsolidatedTrialBalance;
+import com.michaelmuther.trialbalance.GLAccount;
+import com.michaelmuther.trialbalance.SourceTrialBalance;
 
 import java.time.LocalDate;
 import java.util.HashMap;

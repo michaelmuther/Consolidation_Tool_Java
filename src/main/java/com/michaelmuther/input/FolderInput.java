@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashSet;
+import java.util.stream.Stream;
 
 /*
 Class contains folder path data, gathers all files in the path, adds to a hashset, and makes the hashSet of files
@@ -18,32 +19,23 @@ public class FolderInput {
     String INPUT_TRIAL_BALANCE_FOLDER = "src/input_trial_balances";
     Path directoryPath = Paths.get(INPUT_TRIAL_BALANCE_FOLDER);
 
-    // temp helper function
-    public void printAllFilesInFolder() {
-        try {
-            Files.list(directoryPath)
-                    .filter(FolderInput::isXLSX) // this picks up the .DS_Store file; it needs to be filtered. regex?
-                    .forEach(file -> System.out.println(file.getFileName()));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    // regex predicate
+    /**
+     * This is a helper method that returns true if the Path object of a file has .xlsx as its suffix; method is used in
+     * the printAllFilesInFolder method of this same class.
+     * @param path
+     * @return boolean
+     */
     private static boolean isXLSX(Path path) {
-        String FILE_EXTENSION = ".xlsx";
+        final String FILE_EXTENSION = ".xlsx";
         String fileName = path.getFileName().toString();
-        String subString = fileName.substring(fileName.length() - 5,fileName.length());
-//        System.out.println(subString);
-        return FILE_EXTENSION.equals(subString);
+        return fileName.endsWith(FILE_EXTENSION);
     }
 
-    // temp helper function
     public void getInput() {
         try {
             Files.list(directoryPath)
                     .filter(FolderInput::isXLSX)
-                    .forEach(file -> files.add(file.toFile()));
+                    .forEach(path -> files.add(path.toFile()));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -53,7 +45,19 @@ public class FolderInput {
         return files;
     }
 
+    // temp helper function
     public void printFiles() {
         files.forEach(System.out::println);
+    }
+
+    // temp helper function
+    public void printAllFilesInFolder() {
+        try (Stream<Path> pathStream = Files.list(directoryPath)){
+            pathStream.filter(FolderInput::isXLSX)
+                    .map(Path::getFileName)
+                    .forEach(System.out::println);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

@@ -1,4 +1,4 @@
-package com.michaelmuther;
+package com.michaelmuther.trialbalance;
 
 import java.time.LocalDate;
 import java.util.HashMap;

@@ -1,19 +1,15 @@
-package com.michaelmuther;
+package com.michaelmuther.trialbalance;
 
 import java.math.BigDecimal;
 
 public class GLAccount {
 
-//    public enum Type {ASSET, LIABILITY, EQUITY, REVENUE, EXPENSE, OTHER_EXPENSE}
-
     private final int number;
-//    private final Type type;
     private final String name;
     private BigDecimal balance;
 
     public GLAccount (int accountNumber, String accountName, BigDecimal balance) {
         this.number = accountNumber;
-//        this.type = determineType(number);
         this.name = accountName;
         this.balance = balance;
     }
@@ -22,21 +18,32 @@ public class GLAccount {
         return number;
     }
 
-//    public Type getType() {
-//        return type;
-//    }
-
     public String getName() {
         return name;
-    }
-
-    public void setBalance(BigDecimal balance) {
-        this.balance = balance;
     }
 
     public BigDecimal getBalance() {
         return balance;
     }
+
+    public void setBalance(BigDecimal balance) {
+        this.balance = balance;
+    }
+}
+
+/*
+Commented code sandbox:
+
+class members:
+//    public enum Type {ASSET, LIABILITY, EQUITY, REVENUE, EXPENSE, OTHER_EXPENSE}
+//    private final Type type;
+in constructor
+//        this.type = determineType(number);
+
+class methods:
+//    public Type getType() {
+//        return type;
+//    }
 
 //    private static Type determineType(int accountNumber) {
 //        if (accountNumber < 200)
@@ -53,4 +60,4 @@ public class GLAccount {
 //            return Type.OTHER_EXPENSE;
 //        return null;
 //    }
-}
+ */

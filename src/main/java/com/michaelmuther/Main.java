@@ -1,7 +1,6 @@
 package com.michaelmuther;
 
 import com.michaelmuther.input.FolderInput;
-import com.michaelmuther.input.STBFactory;
 
 public class Main {
 
@@ -17,10 +16,11 @@ public class Main {
         System.out.println("All files imported:");
         testInput.printFiles();
 
-        System.out.println("\n***testSTBFactory***");
-        var testSTBFactory = new STBFactory(testInput.getFiles());
-        testSTBFactory.createSourceTrialBalances();
-        System.out.println("size of sourceTrialBalancesHashSet: "+ testSTBFactory.getSourceTrialBalances().size());
+//        System.out.println("\n***testSTBFactory***");
+//        var testSTBFactory = new STBFactory(testInput.getFiles());
+//        testSTBFactory.createSourceTrialBalances();
+//        System.out.println("size of sourceTrialBalancesHashSet: "+ testSTBFactory.getSourceTrialBalances().size());
+//        testSTBFactory.printAllSourceTrialBalances();
 
 
 

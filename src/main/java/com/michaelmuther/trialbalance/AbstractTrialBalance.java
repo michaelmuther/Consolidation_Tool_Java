@@ -1,11 +1,11 @@
-package com.michaelmuther;
+package com.michaelmuther.trialbalance;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.TreeMap;
 
-abstract class AbstractTrialBalance {
+public abstract class AbstractTrialBalance {
 
     private final String companyName;
     private final LocalDate date;
