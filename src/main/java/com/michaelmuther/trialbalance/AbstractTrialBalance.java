@@ -17,11 +17,8 @@ public abstract class AbstractTrialBalance {
         this.date = date;
         this.accounts = accounts;
         this.isBalanced = isTrialBalanceBalanced();
+        System.out.println(companyName + " is balanced: " + isBalanced);
     }
-
-//    public String getCompanyName() {
-//        return companyName;
-//    }
 
     public LocalDate getDate() {
         return date;
@@ -35,19 +32,17 @@ public abstract class AbstractTrialBalance {
         return isBalanced;
     }
 
-    // this is not working, it needs to be tested
     private boolean isTrialBalanceBalanced() {
-//        return true;
-//        accounts.values().forEach(i-> System.out.println("Account: " + i.getNumber() + " Balance: " + i.getBalance()));
 
-        boolean isBalanced = accounts.values()
-            .stream()
-            .map(GLAccount::getBalance)
-            .reduce(BigDecimal.ZERO, BigDecimal::add)
-            .equals(BigDecimal.ZERO);
-        System.out.println(companyName + " is balanced: " + isBalanced);
-        return isBalanced;
-//        return true;
+        BigDecimal trialBalanceTotal = accounts.values()
+                .stream()
+                .map(GLAccount::getBalance)
+                .peek(i -> System.out.println("gl account amount: " + i))
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+        System.out.println("trial balance int value:" + trialBalanceTotal.intValue());
+        boolean tbIsBalanced = trialBalanceTotal.intValue() == 0;
+        System.out.println(companyName + " is balanced: " + tbIsBalanced);
+        return tbIsBalanced;
     }
 
     public void printTrialBalance() {

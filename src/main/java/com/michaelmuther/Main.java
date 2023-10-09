@@ -1,6 +1,8 @@
 package com.michaelmuther;
 
+import com.michaelmuther.consolidator.Consolidator;
 import com.michaelmuther.input.FolderInput;
+import com.michaelmuther.trialbalance.STBFactory;
 
 public class Main {
 
@@ -16,20 +18,16 @@ public class Main {
         System.out.println("All files imported:");
         testInput.printFiles();
 
-//        System.out.println("\n***testSTBFactory***");
-//        var testSTBFactory = new STBFactory(testInput.getFiles());
-//        testSTBFactory.createSourceTrialBalances();
-//        System.out.println("size of sourceTrialBalancesHashSet: "+ testSTBFactory.getSourceTrialBalances().size());
-//        testSTBFactory.printAllSourceTrialBalances();
+        System.out.println("\n***testSTBFactory***");
+        var testSTBFactory = new STBFactory(testInput.getFiles());
+        testSTBFactory.createSourceTrialBalances();
+        System.out.println("size of sourceTrialBalancesHashSet: "+ testSTBFactory.getSourceTrialBalances().size());
+        testSTBFactory.printAllSourceTrialBalances();
 
-
-
-//        testSTBFactory.printAllSourceTrialBalances();
-//        System.out.println("number of files: "+ test.getFiles().size());
-//        test.getInput();
-//        var testConsolidator = new Consolidator(testSTBFactory.getSourceTrialBalances());
-//        var testConsolidatedTB = testConsolidator.consolidate();
-//        testConsolidatedTB.printTrialBalance();
+        System.out.println("\n***testConsolidator***");
+        var testConsolidator = new Consolidator(testSTBFactory.getSourceTrialBalances());
+        var testConsolidatedTB = testConsolidator.consolidate();
+        testConsolidatedTB.printTrialBalance();
 
         // from inputMain:
 //        test.printAllFiles();

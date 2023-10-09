@@ -32,7 +32,7 @@ public class GLAccount {
 }
 
 /*
-Commented code sandbox:
+Commented code stash:
 
 class members:
 //    public enum Type {ASSET, LIABILITY, EQUITY, REVENUE, EXPENSE, OTHER_EXPENSE}
