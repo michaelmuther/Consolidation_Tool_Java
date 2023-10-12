@@ -23,10 +23,10 @@ public class Consolidator {
     public ConsolidatedTrialBalance consolidate() {
 
         // checks this first:
-        System.out.println("dates match: " + datesMatch());
+//        System.out.println("dates match: " + datesMatch()); // for testing
 
         // then checks if the trial balances are balanced. This could be done in the STB factory
-        System.out.println("trial balances are balanced: " + sourceTrialBalancesAreBalanced());
+//        System.out.println("trial balances are balanced: " + sourceTrialBalancesAreBalanced()); // for testing
 
         if (datesMatch() && sourceTrialBalancesAreBalanced())
             return new ConsolidatedTrialBalance(date, consolidateLogic());

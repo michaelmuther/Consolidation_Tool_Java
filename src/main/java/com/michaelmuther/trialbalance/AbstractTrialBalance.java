@@ -17,7 +17,7 @@ public abstract class AbstractTrialBalance {
         this.date = date;
         this.accounts = accounts;
         this.isBalanced = isTrialBalanceBalanced();
-        System.out.println(companyName + " is balanced: " + isBalanced);
+//        System.out.println(companyName + " is balanced: " + isBalanced);
     }
 
     public LocalDate getDate() {
@@ -37,11 +37,11 @@ public abstract class AbstractTrialBalance {
         BigDecimal trialBalanceTotal = accounts.values()
                 .stream()
                 .map(GLAccount::getBalance)
-                .peek(i -> System.out.println("gl account amount: " + i))
+//                .peek(i -> System.out.println("gl account amount: " + i)) // for testing
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
-        System.out.println("trial balance int value:" + trialBalanceTotal.intValue());
+//        System.out.println("trial balance int value:" + trialBalanceTotal.intValue()); // for testing
         boolean tbIsBalanced = trialBalanceTotal.intValue() == 0;
-        System.out.println(companyName + " is balanced: " + tbIsBalanced);
+//        System.out.println(companyName + " is balanced: " + tbIsBalanced); // for testing
         return tbIsBalanced;
     }
 

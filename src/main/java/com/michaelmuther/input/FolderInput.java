@@ -17,7 +17,7 @@ public class FolderInput {
     HashSet<File> files = new HashSet<>();
 
     String INPUT_TRIAL_BALANCE_FOLDER = "src/input_trial_balances";
-    Path directoryPath = Paths.get(INPUT_TRIAL_BALANCE_FOLDER);
+    Path inputFolderPath = Paths.get(INPUT_TRIAL_BALANCE_FOLDER);
 
     /**
      * This is a helper method that returns true if the Path object of a file has .xlsx as its suffix; method is used in
@@ -33,7 +33,7 @@ public class FolderInput {
 
     public void getInput() {
         try {
-            Files.list(directoryPath)
+            Files.list(inputFolderPath)
                     .filter(FolderInput::isXLSX)
                     .forEach(path -> files.add(path.toFile()));
         } catch (IOException e) {
@@ -52,7 +52,7 @@ public class FolderInput {
 
     // temp helper function
     public void printAllFilesInFolder() {
-        try (Stream<Path> pathStream = Files.list(directoryPath)){
+        try (Stream<Path> pathStream = Files.list(inputFolderPath)){
             pathStream.filter(FolderInput::isXLSX)
                     .map(Path::getFileName)
                     .forEach(System.out::println);

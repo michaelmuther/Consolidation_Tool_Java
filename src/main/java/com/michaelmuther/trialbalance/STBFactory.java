@@ -34,8 +34,7 @@ public class STBFactory {
 
     public void createSourceTrialBalances() {
 
-        System.out.println("Amount of files: " + files.size()); // for testing
-
+//        System.out.println("Amount of files: " + files.size()); // for testing
         for(File file : files) {
             sourceTrialBalances.add(createSourceTrialBalanceFromFile(file));
         }
@@ -50,7 +49,7 @@ public class STBFactory {
         try {
             FileInputStream fileInputStream = new FileInputStream(file);
             workbook = new XSSFWorkbook(fileInputStream);
-            System.out.println("Inside try block");
+//            System.out.println("Inside try block"); // for testing
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -61,17 +60,19 @@ public class STBFactory {
         company = headerRow.getCell(1).getStringCellValue();
         date = headerRow.getCell(3).getLocalDateTimeCellValue().toLocalDate();
 
-        System.out.println(company);
-        System.out.println(date);
+//        System.out.println(company); // for testing
+//        System.out.println(date); // for testing
 
         Iterator<Row> rowIterator = sheet.iterator();
         rowIterator.next(); // skip first row (0)
         rowIterator.next(); // skip second row (1)
 
-        int rowNumber = 3; // starts at 1
+//        int rowNumber = 3; // starts at 1 // for testing
 
         while (rowIterator.hasNext()) {
             Row row = rowIterator.next();
+
+            // for testing:
 //            try {
 //                System.out.println("company: " + company + " row number: " + rowNumber + " cell 0 (account) type: " + row.getCell(0).getCellType());
 //                System.out.println("company: " + company + " row number: " + rowNumber + " cell 1 (name) type: " + row.getCell(1).getCellType());
@@ -88,7 +89,6 @@ public class STBFactory {
             accounts.put(number, new GLAccount(number, name, balance));
         }
 
-//        return null;
         return new SourceTrialBalance(company, date, accounts);
     }
 
@@ -110,12 +110,3 @@ public class STBFactory {
     }
 }
 
-/*
-Commented code stash:
-
-class members:
-
-in constructor
-//        this.createSourceTrialBalances();
-
- */
