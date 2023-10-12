@@ -8,10 +8,11 @@ import java.util.TreeMap;
 public abstract class AbstractTrialBalance {
 
     private final String companyName;
+
     private final LocalDate date;
+
     private final HashMap<Integer, GLAccount> accounts;
     private final boolean isBalanced;
-
     public AbstractTrialBalance(String companyName, LocalDate date, HashMap<Integer, GLAccount> accounts) {
         this.companyName = companyName;
         this.date = date;
@@ -26,6 +27,10 @@ public abstract class AbstractTrialBalance {
 
     public HashMap<Integer, GLAccount> getAccounts() {
         return accounts;
+    }
+
+    public String getCompanyName() {
+        return companyName;
     }
 
     public boolean isBalanced() {

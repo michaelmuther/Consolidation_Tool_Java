@@ -29,7 +29,7 @@ public class Main {
         testConsolidatedTB.printTrialBalance(); // for testing
 
         System.out.println("\n***testOutput***");
-        var testOutput = new FolderOutput(testConsolidator.getConsolidatedTrialBalance());
+        var testOutput = new FolderOutput(testConsolidatedTB);
         testOutput.generateOutput();
     }
 }
